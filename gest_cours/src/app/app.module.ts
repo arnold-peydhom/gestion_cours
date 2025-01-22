@@ -9,6 +9,7 @@ import { AddCourseComponent } from './Course/add-course/add-course.component';
 import { DisplayCourseComponent } from './Course/display-course/display-course.component';
 import { CourseDetailComponent } from './Course/course-detail/course-detail.component';
 import { HomeComponent } from './home/home.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,14 @@ import { HomeComponent } from './home/home.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    RouterModule.forRoot([
+      {path: '', redirectTo: 'home',pathMatch:'full'},
+      {path:'home', component: HomeComponent},
+      {path:'add-course', component: AddCourseComponent},
+      {path:'display-course', component: DisplayCourseComponent},
+      {path:'course-detail', component: CourseDetailComponent}
+    ])
   ],
   providers: [
     provideClientHydration(withEventReplay())
